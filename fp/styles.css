@@ -1,0 +1,80 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.piano {
+    display: flex;
+    position: relative;
+}
+
+.key {
+    border: 1px solid #000;
+    height: 200px;
+    width: 60px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
+
+.key.white {
+    background-color: white;
+}
+
+.key.black {
+    background-color: black;
+    width: 40px;
+    height: 120px;
+    position: absolute;
+    margin-left: -20px;
+    z-index: 1;
+    border-radius: 3px;
+}
+
+/* Proper positions for black keys */
+.key[data-note="C#"] {
+    left: 60px;
+}
+
+.key[data-note="D#"] {
+    left: 125px;
+}
+
+.key[data-note="F#"] {
+    left: 248px;
+}
+
+.key[data-note="G#"] {
+    left: 310px;
+}
+
+.key[data-note="A#"] {
+    left: 372px;
+}
+
+.key[data-note="C#2"] {
+    left: 495px;
+}
+
+.key[data-note="D#2"] {
+    left: 558px;
+}
+
+/* Hover and active styles */
+.key.black:hover,
+.key.white:hover {
+    background-color: #ddd;
+}
+
+.key.black:active {
+    background-color: #444;
+}
+
+.key.white:active {
+    background-color: #bbb;
+}
