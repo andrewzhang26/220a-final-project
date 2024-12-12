@@ -7,10 +7,19 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div>
+    <div class="content-container">
         <h1>Virtual Trombone with Spectral Modeling Synthesis</h1>
-        <h2>Andrew H. Zhang | Music 220A Final Project</h2>
-        <p>HELLOHELLOHELLO</p>
+        <h3>Andrew H. Zhang | Music 220A Final Project</h3>
+        <p>This keyboard allows you to play a virtual trombone.</p>
+        <ul>
+            <li>Selecting "Real Sound" allows you to play samples recorded directly from a (my) trombone.</li>
+            <li>
+                Selecting "Synthesized Sound"
+                allows you to play completely synthesized sounds that sound just like they came from my
+                trombone. Specifically, they are synthesized with a Sinusoidal plus Residual (SPR) model, 
+                a technique used in Spectral Modeling Synthesis (SMS). 
+            </li>
+        </ul>
         <div class="piano">
             <div class="key white" data-note="C"></div>
             <div class="key black" data-note="C#"></div>
@@ -31,7 +40,73 @@
             <div class="key white" data-note="E2"></div>
             <div class="key white" data-note="F2"></div>
         </div>
+        <div id="button-container">
+            <button data-value="0">Real Sound</button>
+            <button data-value="1">Synthesized Sound</button>
+        </div>
+        <hr>
+        <h2>Spectral Modeling Synthesis (SMS) Explained</h2>
+        <p>
+            Spectral Modeling Synthesis (SMS) is a technique for sound synthesis that 
+            represents audio as a combination of two components: a sinusoidal component 
+            capturing tonal or harmonic content and a residual component representing 
+            noise-like or non-harmonic elements. The sinusoidal component is modeled as
+            an additive combination of multiple time-varying sinusoids with specific 
+            frequencies, amplitudes, and phases. This enables precise control over tonal
+            characteristics, making it great for a task like imitating the sound and 
+            harmonics of trombone. The residual, typically modeled with spectral subtraction
+            or stochastic noise, allows the synthesis of realistic non-tonal elements such 
+            as articulations, breaths, and air. 
+        </p>
+        <p>
+            For the section below, the code I am using is available on GitHub: 
+            <a href="https://github.com/andrewzhang26/220a-final-project/" target="_blank">
+                andrewzhang26/220a-final-project
+            </a>
+        </p>
+        <p>
+            To help demonstrate SMS, I will start with a sample recording of me playing a melody
+            on trombone. This is a real-life recording of a real trombone. 
+        </p>
+        <img src="images/waves0.png" alt="Waveform of sample recording" class="wave-image">
+        <audio controls>
+            <source src="sounds/trombone-free-02.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio> 
+        <p>
+            We then perform a spectral analysis of the sample recording. As shown in the spectogram below, 
+            the SPR model indentifies the sinusoidal components (marked by the black lines and dots), 
+            capturing both the harmonics and the residual noise. 
+        </p>
+        <img src="images/spectral.png" alt="Spectral diagram of sample recording" class="wave-image">
+        <p>
+            Then using the data from the spectral analysis, we are able to additively synthesize a trombone sound. 
+            First, here is just the harmonic component synthesized. You'll notice the sound is a lot more pure 
+            (or synthetic) than the sample recording, and lacks the sound of articulations, yet it still sounds
+            quite like a trombone. 
+        </p>
+        <audio controls>
+            <source src="spr-model-sounds/harmonic_sound.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio> 
+        <p>
+            Now, here is just the residual component. It sounds quite bizarre. Focus in on how you can really hear
+            the initial articulation of each note and the airy vibrato at the end.  
+        </p>
+        <audio controls>
+            <source src="spr-model-sounds/residual_sound.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio> 
+        <p>
+            Finally, here is the fully synthesized trombone sound, with both the harmonic and residual components. 
+            It's fully synthesized, but sounds just like the real thing. 
+        </p>
+        <audio controls>
+            <source src="spr-model-sounds/spr_combined_output.wav" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio> 
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

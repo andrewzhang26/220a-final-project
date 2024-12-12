@@ -3,6 +3,8 @@ Andrew Zhang | Music 220a Final Project
 
 Experimentation with Synthesizing Trombone Sounds with Spectral Modeling Synthesis, using Xavier Serra's SMS toolkit: https://github.com/MTG/sms-tools  
 
+Project Demo and Description: https://ccrma.stanford.edu/~zhang/220a/fp/index.html 
+
 Install dependencies and initializing virtual environment: 
 ```
 python -m venv .venv

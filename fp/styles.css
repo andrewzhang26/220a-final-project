@@ -1,11 +1,26 @@
 body {
-    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
+}
+
+.content-container {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+button {
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button.active {
+background-color: #007BFF;
+color: white;
 }
 
 .piano {
@@ -77,4 +92,8 @@ body {
 
 .key.white:active {
     background-color: #bbb;
+}
+
+.wave-image {
+    width: 75%;
 }
